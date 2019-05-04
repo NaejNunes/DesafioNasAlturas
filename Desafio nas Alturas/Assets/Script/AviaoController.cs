@@ -5,7 +5,7 @@ using UnityEngine;
 public class AviaoController : MonoBehaviour
 {
     Rigidbody2D fisica;
-    public float velocidade;
+    public float forca;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +19,7 @@ public class AviaoController : MonoBehaviour
 
     private void Impulsionar()
     {
-        this.fisica.AddForce(Vector2.up * velocidade, ForceMode2D.Impulse);
+        this.fisica.AddForce(Vector2.up * forca, ForceMode2D.Impulse);
     }
     // Update is called once per frame
     void Update()
