@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AviaoController : MonoBehaviour
 {
+    
     Rigidbody2D fisica;
-    public float forca;
+    [SerializeField]
+    private float forca;
     // Start is called before the first frame update
     void Start()
     {
