@@ -12,6 +12,7 @@ public class GeradorDeObstaculo : MonoBehaviour
 
     private float cronometro = 0f;
     // Start is called before the first frame update
+
      void Awake()
     {
         cronometro -= tempoParaGerar;

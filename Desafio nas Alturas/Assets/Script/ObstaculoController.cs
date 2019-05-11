@@ -5,7 +5,15 @@ using UnityEngine;
 public class ObstaculoController : MonoBehaviour
 {
     [SerializeField]
-    private float velocidade;
+    private float velocidade = 0.2f;
+
+    [SerializeField]
+    private float variacaoDaPosicaoY;
+
+    private void Awake()
+    {
+        transform.Translate(Vector3.up * Random.Range(-variacaoDaPosicaoY, variacaoDaPosicaoY));
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -16,5 +24,15 @@ public class ObstaculoController : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.left * velocidade);
+    }
+
+    private void OnTriggerEnter2D(Collider2D outro)
+    {
+        Destruir();
+    }
+
+    public void Destruir()
+    {
+        GameObject.Destroy(this.gameObject);
     }
 }
