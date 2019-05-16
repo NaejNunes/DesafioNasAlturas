@@ -13,6 +13,8 @@ public class AviaoController : MonoBehaviour
     [SerializeField]
     private Diretor diretor;
 
+    private Vector3 posicaoInicial;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,13 @@ public class AviaoController : MonoBehaviour
         //Debug.Log("Acordei");
         this.fisica = this.GetComponent<Rigidbody2D>();
         diretor = GameObject.FindObjectOfType<Diretor>();
+        posicaoInicial = this.transform.position;
+    }
+
+    public void Reiniciar()
+    {
+        this.transform.position = posicaoInicial;
+        this.fisica.simulated = true;
     }
 
     private void Impulsionar()
