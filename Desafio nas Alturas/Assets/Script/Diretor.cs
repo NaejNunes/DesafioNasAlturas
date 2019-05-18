@@ -10,10 +10,12 @@ public class Diretor : MonoBehaviour
 
     private AviaoController aviao;
 
+    private Pontuacao pontuacao;
+
     public void FinalizarJogo()
     {
         Time.timeScale = 0;
-        imagemGameOver.SetActive(true);imagemGameOver.SetActive(true);
+        imagemGameOver.SetActive(true);
         Debug.Log("Acabou");
     }
 
@@ -22,12 +24,15 @@ public class Diretor : MonoBehaviour
         aviao.Reiniciar();
         imagemGameOver.SetActive(false);
         Time.timeScale = 1;
+        pontuacao.Reiniciar();
         DestruirObstaculos();
         Debug.Log("Reiniciou");
     }
     void Start()
     {
         aviao = GameObject.FindObjectOfType<AviaoController>();
+
+        pontuacao = GameObject.FindObjectOfType<Pontuacao>();
     }
 
     private void DestruirObstaculos()

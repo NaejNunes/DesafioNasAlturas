@@ -10,6 +10,12 @@ public class ObstaculoController : MonoBehaviour
     [SerializeField]
     private float variacaoDaPosicaoY;
 
+    private Vector3 posicaoDoAviao;
+
+    private Pontuacao pontuacao;
+
+    private bool pontuei;
+
     private void Awake()
     {
         transform.Translate(Vector3.up * Random.Range(-variacaoDaPosicaoY, variacaoDaPosicaoY));
@@ -17,13 +23,21 @@ public class ObstaculoController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        posicaoDoAviao = GameObject.FindObjectOfType<AviaoController>().transform.position;
+        pontuacao = GameObject.FindObjectOfType<Pontuacao>();
     }
 
     // Update is called once per frame
     void Update()
-    {
+    {      
         transform.Translate(Vector3.left * velocidade);
+
+        if (!pontuei && this.transform.position.x < posicaoDoAviao.x)
+        {
+            pontuei = true;
+
+            pontuacao.AdicionaPontos();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D outro)
